@@ -1,0 +1,28 @@
+package bg.softuni.kickoffnotifications.service;
+
+import bg.softuni.kickoffnotifications.dto.BroadcastRequest;
+import bg.softuni.kickoffnotifications.dto.NotificationDto;
+import bg.softuni.kickoffnotifications.dto.NotifyRequest;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.UUID;
+
+public interface NotificationService {
+
+    List<UUID> broadcast(BroadcastRequest request);
+
+    NotificationDto notifyUser(NotifyRequest request);
+
+    List<NotificationDto> getForUser(UUID userId);
+
+    long countUnread(UUID userId);
+
+    void markRead(UUID id);
+
+    int markAllRead(UUID userId);
+
+    void clearAll(UUID userId);
+
+    void deleteOlderThan(LocalDateTime cutoff);
+}
